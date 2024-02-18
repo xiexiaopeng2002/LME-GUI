@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>738</width>
+    <height>599</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>738</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Workflow</string>
+    </property>
+    <addaction name="NewWorkFlow"/>
+    <addaction name="EditWorkflow"/>
+    <addaction name="action"/>
+    <addaction name="separator"/>
+    <addaction name="actionhelp"/>
+   </widget>
+   <widget class="QMenu" name="menuTemplate">
+    <property name="title">
+     <string>Template</string>
+    </property>
+    <addaction name="actionOpen"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menuTemplate"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="NewWorkFlow">
+   <property name="text">
+    <string>新建工作流</string>
+   </property>
+  </action>
+  <action name="EditWorkflow">
+   <property name="text">
+    <string>编辑工作流</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>打开工作流</string>
+   </property>
+  </action>
+  <action name="actionhelp">
+   <property name="text">
+    <string>help</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>3rdparty/test2.htm</file>
+        <file>3rdparty/JSmol.lite.js</file>
+        <file>3rdparty/JSmol.lite.nojq.js</file>
+        <file>3rdparty/JSmol.min.js</file>
+        <file>3rdparty/JSmol.min.nojq.js</file>
+    </qresource>
+</RCC>

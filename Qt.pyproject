@@ -1,0 +1,18 @@
+{
+    "files": [
+        "main.py",
+        "MainWindow.ui",
+        "SelectPoint.ui",
+        "WorkflowConfigCreater.ui",
+        "mainwindow.py",
+        "MainWindow_ui.py",
+        "pagecontroller.py",
+        "Qt.pyproject",
+        "Qt.pyproject.user",
+        "SelectPoint_ui.py",
+        "WorkflowConfigCreater_ui.py",
+        "resources/LME-GUI.qrc",
+        "rc_lmegui.py",
+        "SelectPoint.py"
+    ]
+}
