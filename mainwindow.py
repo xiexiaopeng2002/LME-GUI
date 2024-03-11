@@ -17,12 +17,12 @@ class MainWindow(QMainWindow):
         self._page = PreviewPage(self)
         self._ui.preview.setPage(self._page)
 
-    def __init__(self):
-        super(MainWindow,self).__init__()
-        self.setupUi(self)
-        self.NewWorkFlow.triggered.connect(self.gowfcCreater)
-        self.actionOpen.triggered.connect(self.showstructure)
-    def gowfcCreater(self):
-        self.switch_wfcCreater.emit()
-    def showstructure(self):
-        self.switch_actionOpen.emit()
+    # def __init__(self):
+    #     super(MainWindow,self).__init__()
+    #     self.setupUi(self)
+    #     self.NewWorkFlow.triggered.connect(self.gowfcCreater)
+    #     self.actionOpen.triggered.connect(self.showstructure)
+    # def gowfcCreater(self):
+    #     self.switch_wfcCreater.emit()
+    # def showstructure(self):
+    #     self.switch_actionOpen.emit()

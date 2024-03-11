@@ -97,6 +97,7 @@ class Ui_wfcCreater(object):
         self.selectpointButton = QPushButton(wfcCreater)
         self.selectpointButton.setObjectName(u"selectpointButton")
         self.selectpointButton.setGeometry(QRect(50, 170, 111, 31))
+        self.selectpointButton.setCheckable(True)
         self.pushButton_2 = QPushButton(wfcCreater)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setGeometry(QRect(340, 450, 111, 31))

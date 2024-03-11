@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>840</width>
+    <height>599</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>选择位点</string>
   </property>
-  <widget class="QWebEngineView" name="preview">
+  <widget class="QWebEngineView" name="preview" native="true">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -21,11 +21,11 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>401</width>
-     <height>291</height>
+     <width>831</width>
+     <height>591</height>
     </rect>
    </property>
-   <property name="url">
+   <property name="url" stdset="0">
     <url>
      <string>about:blank</string>
     </url>

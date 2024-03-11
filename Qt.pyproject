@@ -13,6 +13,9 @@
         "WorkflowConfigCreater_ui.py",
         "resources/LME-GUI.qrc",
         "rc_lmegui.py",
-        "SelectPoint.py"
+        "SelectPoint.py",
+        "previewpage.py",
+        "resources/3rdparty/j2s/java/text/Annotation.js",
+        "resources/3rdparty/j2s/java/text/MessageFormat.js"
     ]
 }

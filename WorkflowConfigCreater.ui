@@ -175,6 +175,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
    <property name="text">
     <string>标记位点选择器</string>
    </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">

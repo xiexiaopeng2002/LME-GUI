@@ -22,12 +22,12 @@ class Ui_SelectPoint(object):
     def setupUi(self, SelectPoint):
         if not SelectPoint.objectName():
             SelectPoint.setObjectName(u"SelectPoint")
-        SelectPoint.resize(400, 300)
+        SelectPoint.resize(840, 599)
         self.preview = QWebEngineView(SelectPoint)
         self.preview.setObjectName(u"preview")
         self.preview.setEnabled(True)
-        self.preview.setGeometry(QRect(0, 0, 401, 291))
-        self.preview.setUrl(QUrl(u"about:blank"))
+        self.preview.setGeometry(QRect(0, 0, 831, 591))
+        self.preview.setProperty("url", QUrl(u"about:blank"))
 
         self.retranslateUi(SelectPoint)
 
