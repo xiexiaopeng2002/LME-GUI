@@ -3,6 +3,7 @@
 <title>HTML5-only and WebGL Jmol Demo</title>
 <head>
 <meta charset="utf-8">
+</head>
 <!-- breaking out the library for debugging -->
 <script type="text/javascript" src="jquery/jquery.js"></script>
 <script type="text/javascript" src="js/JSmoljQueryExt.js"></script>
@@ -27,7 +28,6 @@ Jmol.getProfile() // records repeat calls to overridden or overloaded Java metho
 
 var jmolApplet0; // set up in HTML table, below
 
-// use ?_USE=JAVA or _USE=SIGNED or _USE=HTML5
 
 jmol_isReady = function(applet) {
 	document.title = (applet._id + " is ready")
@@ -67,7 +67,6 @@ Info = {
 
 
 </script>
-</head>
 <body>
 <table width=800 cellpadding=10>
 <tr></tr>
@@ -84,55 +83,8 @@ jmolApplet0 = Jmol.getApplet("jmolApplet0", Info)
 // note that now scripts can be sent immediately after the _Applet object is created
 
 //Jmol.script(jmolApplet0,"background gray;delay 0.5;background black")
-var lastPrompt=0;
+//var lastPrompt=0;
 </script>
-
-<br>
-<a href="javascript:Jmol.script(jmolApplet0,'console')">console</a>
-<a href="javascript:Jmol.script(jmolApplet0,'image')">image</a>
-display
-<a href="javascript:Jmol.script(jmolApplet0,'set antialiasDisplay false')">faster</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set antialiasDisplay true')">sharper</a>
-<br>
-platformSpeed:
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 8')" title='all features'>8</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 7')" title='no antialiasing'>7</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 6')" title='no translucency'>6</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 5')" title='surfaces dotted'>5</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 4')" title='cartoons as trace'>4</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 3')" title='geosurfaces as dots'>3</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 2')" title='ellipsoids as dots'>2</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 1')" title='wireframe only'>1</a>
-<br>
-info <a href="javascript:Jmol.showInfo(jmolApplet0, true)">show</a>
-<a href="javascript:Jmol.clearConsole(jmolApplet0)">clear</a>
-<a href="javascript:Jmol.showInfo(jmolApplet0, false)">hide</a>
-
-<br><a href="javascript:Jmol.script(jmolApplet0,'select *;cartoons off;spacefill only')">spacefill</a>
-<a href="javascript:Jmol.script(jmolApplet0,'select *;cartoons off;wireframe -0.1')">wire</a>
-<a href="javascript:Jmol.script(jmolApplet0,'select *;cartoons off;spacefill 23%;wireframe 0.15')">ball&stick</a>
-<a href="javascript:Jmol.script(jmolApplet0,'select protein or nucleic;cartoons only')">cartoons</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set cartoonFancy true')">fancy</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set cartoonFancy false')">not</a>
-<a href="javascript:Jmol.script(jmolApplet0,'set cartoonFancy false;set hermitelevel 0')">flat</a>
-
-<br><a href="javascript:Jmol.script(jmolApplet0,'color property atomno')">color atomno</a>
-<a href="javascript:Jmol.script(jmolApplet0,'color cpk')">color cpk</a>
-<a href="javascript:Jmol.script(jmolApplet0,'color structure')">color structure</a>
-<br>
-<a href="javascript:Jmol.script(jmolApplet0,'select *;isosurface vdw')">isosurface vdw</a>
-<a href="javascript:Jmol.script(jmolApplet0,'isosurface delete')">off</a>
-<a href="javascript:Jmol.script(jmolApplet0,'if ({atomno < 10}.partialcharge == 0){calculate partialcharge};isosurface vdw map mep')">mep</a>
-<a href="javascript:Jmol.script(jmolApplet0,'isosurface translucent')">translucent</a>
-<a href="javascript:Jmol.script(jmolApplet0,'isosurface opaque')">opaque</a>
-
-
-<br>
-labels <a href="javascript:Jmol.script(jmolApplet0,'if (_fileType == &quot;Pdb&quot;){select *.CA;label %n%r}else{select *;label %a};select *;')">on</a>
-<a href="javascript:Jmol.script(jmolApplet0,'select *;labels off')">off</a>
-<a href="javascript:Jmol.script(jmolApplet0,'font echo 20 serif;fsize=20;set echo top center;echo echo test')">echo</a>
-<a href="javascript:Jmol.script(jmolApplet0,'if (!fsize){fsize=20};fsize += 4;font echo @fsize serif;')">larger</a>
-<a href="javascript:Jmol.script(jmolApplet0,'if (!fsize){fsize=20};fsize -= 4;if (fsize < 10){fsize = 10};font echo @fsize serif')">smaller</a>
 
 </td>
 </tr></table>

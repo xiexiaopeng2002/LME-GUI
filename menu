@@ -1,0 +1,430 @@
+menu = # popupMenu.mnu Jmol version 16.2.5  2024-04-16 21:43
+
+# Part I -- Menu Structure
+# ------------------------
+
+@COLOR = black darkgray lightgray white - red orange yellow green cyan blue indigo violet
+@AXESCOLOR = gray salmon maroon olive slateblue gold orchid
+popupMenu = fileMenu modelSetMenu FRAMESbyModelComputedMenu configurationComputedMenu - selectMenuText viewMenu renderMenu colorMenu - surfaceMenu FILEUNITMenu - sceneComputedMenu zoomMenu spinMenu VIBRATIONMenu spectraMenu FRAMESanimateMenu - measureMenu pickingMenu - showConsole JSConsole showMenu computationMenu - languageComputedMenu aboutMenu
+fileMenu | 文件 = loadMenu saveMenu exportMenu SIGNEDJAVAcaptureMenuSPECIAL 
+loadMenu | 载入 = SIGNEDloadFile SIGNEDloadUrl SIGNEDloadPdb SIGNEDloadMol SIGNEDloadScript - reload SIGNEDloadFileUnitCell
+saveMenu | 保存 = writeFileTextVARIABLE writeState writeHistory SIGNEDwriteJmol SIGNEDwriteIsosurface 
+exportMenu | Export = SIGNEDNOGLwriteGif SIGNEDNOGLwriteJpg SIGNEDNOGLwritePng SIGNEDNOGLwritePngJmol SIGNEDNOGLwritePovray - SIGNEDNOGLwriteVrml SIGNEDNOGLwriteX3d SIGNEDNOGLwriteSTL
+selectMenuText | 选择 ({0}) = hideNotSelectedCB showSelectionsCB - selectAll selectNone invertSelection - elementsComputedMenu SYMMETRYSelectComputedMenu - PDBproteinMenu PDBnucleicMenu PDBheteroMenu PDBcarboMenu PDBnoneOfTheAbove
+PDBproteinMenu | 蛋白质 = PDBaaResiduesComputedMenu - allProtein proteinBackbone proteinSideChains - polar nonpolar - positiveCharge negativeCharge noCharge
+PDBcarboMenu | 碳水化合物 = PDBcarboResiduesComputedMenu - allCarbo
+PDBnucleicMenu | 核的 = PDBnucleicResiduesComputedMenu - allNucleic nucleicBackbone nucleicBases - DNA RNA - atPairs auPairs gcPairs - aaStructureMenu
+PDBheteroMenu | 异质的(Hetero) = PDBheteroComputedMenu - allHetero Solvent Water - Ligand exceptWater nonWaterSolvent
+viewMenu | 视图 = best front left right top bottom back - axisX axisY axisZ - axisA axisB axisC
+renderMenu | 样式 = renderSchemeMenu - atomMenu labelMenu bondMenu hbondMenu ssbondMenu - PDBstructureMenu - [set_axes]Menu [set_boundbox]Menu [set_UNITCELL]Menu - perspectiveDepthCB stereoMenu
+renderSchemeMenu | 方案 = renderCpkSpacefill renderBallAndStick renderSticks renderWireframe PDBrenderCartoonsOnly PDBrenderTraceOnly
+atomMenu | 原子 = showHydrogensCB - atomNone - atom15 atom20 atom25 atom50 atom75 atom100
+bondMenu | 化学键 = bondNone bondWireframe - bond100 bond150 bond200 bond250 bond300
+hbondMenu | 氢键 = hbondCalc hbondNone hbondWireframe - PDBhbondSidechain PDBhbondBackbone - hbond100 hbond150 hbond200 hbond250 hbond300
+ssbondMenu | 二硫键 = ssbondNone ssbondWireframe - PDBssbondSidechain PDBssbondBackbone - ssbond100 ssbond150 ssbond200 ssbond250 ssbond300
+PDBstructureMenu | 二级结构 = structureNone - backbone cartoon cartoonRockets ribbons rockets strands trace
+VIBRATIONvectorMenu | 向量 = vectorOff vectorOn vibScale20 vibScale05 vector3 vector005 vector01 - vectorScale02 vectorScale05 vectorScale1 vectorScale2 vectorScale5
+stereoMenu | 立体图形 = stereoNone stereoRedCyan stereoRedBlue stereoRedGreen stereoCrossEyed stereoWallEyed
+labelMenu | 标记 = labelNone - labelSymbol labelName labelNumber - labelPositionMenu
+labelPositionMenu | 在原子上放置标示 = labelCentered labelUpperRight labelLowerRight labelUpperLeft labelLowerLeft
+colorMenu | 颜色 = colorrasmolCB [color_]schemeMenu - [color_atoms]Menu [color_bonds]Menu [color_hbonds]Menu [color_ssbonds]Menu colorPDBStructuresMenu [color_isosurface]Menu - [color_labels]Menu [color_vectors]Menu - [color_axes]Menu [color_boundbox]Menu [color_UNITCELL]Menu [color_background]Menu
+[color_atoms]Menu | 原子 = schemeMenu - @COLOR - opaque translucent
+[color_bonds]Menu | 化学键 = none - @COLOR - opaque translucent
+[color_hbonds]Menu | 氢键 = none - @COLOR - opaque translucent
+[color_ssbonds]Menu | 二硫键 = none - @COLOR - opaque translucent
+[color_labels]Menu | 标记 = none - @COLOR - opaque translucent
+[color_vectors]Menu | 向量 = none - @COLOR - opaque translucent
+[color_backbone]Menu | 骨架 = none - schemeMenu - @COLOR - opaque translucent
+[color_cartoon]sMenu | 卡通 = none - schemeMenu - @COLOR - opaque translucent
+[color_ribbon]sMenu | 带状 = none - schemeMenu - @COLOR - opaque translucent
+[color_rockets]Menu | 火箭 = none - schemeMenu - @COLOR - opaque translucent
+[color_strands]Menu | 丝带 = none - schemeMenu - @COLOR - opaque translucent
+[color_trace]Menu | 迹线 = none - schemeMenu - @COLOR - opaque translucent
+[color_background]Menu | 背景 = @COLOR
+[color_isosurface]Menu | 表面 = @COLOR - opaque translucent
+[color_axes]Menu | 轴 = @AXESCOLOR
+[color_boundbox]Menu | 边界盒 = @AXESCOLOR
+[color_UNITCELL]Menu | 单位晶格 = @AXESCOLOR
+colorPDBStructuresMenu | 二级结构 = [color_backbone]Menu [color_cartoon]sMenu [color_ribbon]sMenu [color_rockets]Menu [color_strands]Menu [color_trace]Menu
+schemeMenu | 按方案 = cpk molecule formalcharge partialcharge - altloc#PDB amino#PDB chain#PDB group#PDB monomer#PDB shapely#PDB structure#PDB relativeTemperature#BFACTORS fixedTemperature#BFACTORS property_vxyz#VIBRATION
+[color_]schemeMenu | 按方案 = cpk molecule formalcharge partialcharge - altloc#PDB amino#PDB chain#PDB group#PDB monomer#PDB shapely#PDB structure#PDB relativeTemperature#BFACTORS fixedTemperature#BFACTORS property_vxyz#VIBRATION
+zoomMenu | 缩放 = zoom50 zoom100 zoom150 zoom200 zoom400 zoom800 - zoomIn zoomOut
+spinMenu | 旋转 = spinOn spinOff - [set_spin_X]Menu [set_spin_Y]Menu [set_spin_Z]Menu - [set_spin_FPS]Menu
+VIBRATIONMenu | 振动 = vibrationOff vibrationOn vibration20 vibration05 VIBRATIONvectorMenu
+spectraMenu | 光谱 = hnmrMenu cnmrMenu
+FRAMESanimateMenu | 动画 = animModeMenu - play pause resume stop - nextframe prevframe rewind - playrev restart - FRAMESanimFpsMenu
+FRAMESanimFpsMenu | 设定每秒帧数(FPS) = animfps5 animfps10 animfps20 animfps30 animfps50
+measureMenu | 测量 = showMeasurementsCB - measureOff measureDistance measureAngle measureTorsion PDBmeasureSequence - measureDelete measureList - distanceNanometers distanceAngstroms distancePicometers distanceHz
+pickingMenu | 鼠标拾取 = pickOff pickCenter pickIdent pickLabel pickAtom pickMolecule pickElement - dragAtom dragMolecule - pickSpin - modelKitMode - PDBpickChain PDBpickGroup SYMMETRYpickSite
+computationMenu | 计算 = minimize modelkit
+showMenu | 显示 = showHistory showFile showFileHeader - showOrient showMeasure - showSpacegroup showState SYMMETRYshowSymmetry UNITCELLshow - showIsosurface showMo - extractMOL
+SIGNEDJAVAcaptureMenuSPECIAL | Capture = SIGNEDJAVAcaptureRock SIGNEDJAVAcaptureSpin - SIGNEDJAVAcaptureBegin SIGNEDJAVAcaptureEnd SIGNEDJAVAcaptureOff SIGNEDJAVAcaptureOn SIGNEDJAVAcaptureFpsSPECIAL SIGNEDJAVAcaptureLoopingSPECIAL
+[set_spin_X]Menu | 设定X轴速率 = s0 s5 s10 s20 s30 s40 s50
+[set_spin_Y]Menu | 设定Y轴速率 = s0 s5 s10 s20 s30 s40 s50
+[set_spin_Z]Menu | 设定Z轴速率 = s0 s5 s10 s20 s30 s40 s50
+[set_spin_FPS]Menu | 设定每秒帧数(FPS) = s0 s5 s10 s20 s30 s40 s50
+animModeMenu | 动画模式 = onceThrough palindrome loop
+surfaceMenu | 表面 = surfDots surfVDW surfSolventAccessible14 surfSolvent14 surfMolecular surf2MEP surfMEP surfMoComputedMenuText - surfOpaque surfTranslucent surfOff
+FILEUNITMenu | 对称性 = SYMMETRYShowComputedMenu FILEMOLload FILEUNITone FILEUNITnine FILEUNITnineRestricted FILEUNITninePoly
+[set_axes]Menu | 轴 = on off#axes dotted - byPixelMenu byAngstromMenu
+[set_boundbox]Menu | 边界盒 = on off#axes dotted - byPixelMenu byAngstromMenu
+[set_UNITCELL]Menu | 单位晶格 = on off#axes dotted - byPixelMenu byAngstromMenu
+byPixelMenu | 像素宽度 = 1p 3p 5p 10p
+byAngstromMenu | 几 Å 宽度 = 10a 20a 25a 50a 100a
+aboutMenu | 关于... = jmolMenu systemMenu
+jmolMenu | Jmol = APPLETid version date - help - mouse translations jmolorg
+systemMenu | 系统 = os javaVender javaVersion JAVAprocessors JAVAmemMax JAVAmemTotal
+
+
+# Part II -- Key Definitions
+# --------------------------
+
+jmolorg | http://www.jmol.org = show url "http://www.jmol.org"
+help | Jmol 脚本控制台 = help
+mouse | 鼠标使用手册 = show url "http://wiki.jmol.org/index.php/Mouse_Manual"
+translations | 翻译 = show url "http://wiki.jmol.org/index.php/Internationalisation"
+colorrasmolCB | RasMol 颜色 = 
+hideNotSelectedCB | 只显示己选取的 = set hideNotSelected true | set hideNotSelected false; hide(none)
+perspectiveDepthCB | 深度透视 = 
+showAxesCB | 轴 = set showAxes true | set showAxes false;set axesMolecular
+showBoundBoxCB | 边界盒 = 
+showHydrogensCB | 显示氢原子 = 
+showMeasurementsCB | 显示测量结果 = 
+showSelectionsCB | 显示选择光圈 = 
+showUNITCELLCB | 单位晶格 = 
+selectAll | 全部 = SELECT all
+selectNone | 无 = SELECT none
+invertSelection | 反向选取 = SELECT not selected
+allProtein | 全部 = SELECT protein
+proteinBackbone | 骨架 = SELECT protein and backbone
+proteinSideChains | 侧链 = SELECT protein and not backbone
+polar | 极性残基 = SELECT protein and polar
+nonpolar | 非极性残基 = SELECT protein and not polar
+positiveCharge | 碱性残基 (+) = SELECT protein and basic
+negativeCharge | 酸性残基 (-) = SELECT protein and acidic
+noCharge | 不带电荷的残基 = SELECT protein and not (acidic,basic)
+allCarbo | 全部 = SELECT carbohydrate
+allNucleic | 全部 = SELECT nucleic
+DNA | DNA = SELECT dna
+RNA | RNA = SELECT rna
+nucleicBackbone | 骨架 = SELECT nucleic and backbone
+nucleicBases | 碱 = SELECT nucleic and not backbone
+atPairs | AT 对 = SELECT a,t
+gcPairs | GC 对 = SELECT g,c
+auPairs | AU 对 = SELECT a,u
+A = SELECT a
+C = SELECT c
+G = SELECT g
+T = SELECT t
+U = SELECT u
+allHetero | 全部的 PDB "HETATM" = SELECT hetero
+Solvent | 全部溶剂 = SELECT solvent
+Water | 全部的水 = SELECT water
+nonWaterSolvent | 非水溶剂 (solvent and not water) = SELECT solvent and not water
+exceptWater | 非水溶液的 HETATM (hetero and not water) = SELECT hetero and not water
+Ligand | 配体 = SELECT ligand
+PDBnoneOfTheAbove | 以上皆非 = SELECT not(hetero,protein,nucleic,carbohydrate)
+best | Best = rotate best -1.0
+front | 正视 = if (showBoundBox or showUnitcell) {moveto 2.0 front;delay 1} else {boundbox on;moveto 2.0 front;delay 1;boundbox off}
+left | 左视 = if (showBoundBox or showUnitcell) {moveto 1.0 front;moveto 2.0 left;delay 1} else {boundbox on;moveto 1.0 front;moveto 2.0 left;delay 1;boundbox off}
+right | 右视 = if (showBoundBox or showUnitcell) {moveto 1.0 front;moveto 2.0 right;delay 1} else {boundbox on;moveto 1.0 front;moveto 2.0 right;delay 1;boundbox off}
+top | Top = if (showBoundBox or showUnitcell) {moveto 1.0 front;moveto 2.0 top;delay 1} else {boundbox on;moveto 1.0 front;moveto 2.0 top;delay 1;boundbox off}
+bottom | 底视 = if (showBoundBox or showUnitcell) {moveto 1.0 front;moveto 2.0 bottom;delay 1} else {boundbox on;moveto 1.0 front;moveto 2.0 bottom;delay 1;boundbox off}
+back | 返回 = if (showBoundBox or showUnitcell) {moveto 1.0 front;moveto 2.0 back;delay 1} else {boundbox on;moveto 1.0 front;moveto 2.0 back;delay 1;boundbox off}
+axisA | 轴 = moveto axis a
+axisB | 轴 = moveto axis b
+axisC | 轴 = moveto axis c
+axisX | 轴 = moveto axis x
+axisY | 轴 = moveto axis y
+axisZ | 轴 = moveto axis z
+renderCpkSpacefill | CPK 空间填充 = restrict bonds not selected;select not selected;spacefill 100%;color cpk
+renderBallAndStick | 球－棍 = restrict bonds not selected;select not selected;spacefill 23%AUTO;wireframe 0.15;color cpk
+renderSticks | 棒状 = restrict bonds not selected;select not selected;wireframe 0.3;color cpk
+renderWireframe | 线框 = restrict bonds not selected;select not selected;wireframe on;color cpk
+PDBrenderCartoonsOnly | 卡通 = restrict bonds not selected;select not selected;cartoons on;color structure
+PDBrenderTraceOnly | 迹线 = restrict bonds not selected;select not selected;trace on;color structure
+atomNone | 关闭 = cpk off
+atom15 | 15% 范德华力 = cpk 15%
+atom20 | 20% 范德华力 = cpk 20%
+atom25 | 25% 范德华力 = cpk 25%
+atom50 | 50% 范德华力 = cpk 50%
+atom75 | 75% 范德华力 = cpk 75%
+atom100 | 100% 范德华力 = cpk on
+bondNone | 关闭 = wireframe off
+bondWireframe | 开启 = wireframe on
+bond100 | 0.10 Å = wireframe .1
+bond150 | 0.15 Å = wireframe .15
+bond200 | 0.20 Å = wireframe .2
+bond250 | 0.25 Å = wireframe .25
+bond300 | 0.30 Å = wireframe .3
+hbondCalc | 计算 = hbonds calculate
+hbondNone | 关闭 = hbonds off
+hbondWireframe | 开启 = hbonds on
+PDBhbondSidechain | 设定氢键侧链 = set hbonds sidechain
+PDBhbondBackbone | 设定氢键骨架 = set hbonds backbone
+hbond100 | 0.10 Å = hbonds .1
+hbond150 | 0.15 Å = hbonds .15
+hbond200 | 0.20 Å = hbonds .2
+hbond250 | 0.25 Å = hbonds .25
+hbond300 | 0.30 Å = hbonds .3
+ssbondNone | 关闭 = ssbonds off
+ssbondWireframe | 开启 = ssbonds on
+PDBssbondSidechain | 设定二硫键侧链 = set ssbonds sidechain
+PDBssbondBackbone | 设定二硫键骨架 = set ssbonds backbone
+ssbond100 | 0.10 Å = ssbonds .1
+ssbond150 | 0.15 Å = ssbonds .15
+ssbond200 | 0.20 Å = ssbonds .2
+ssbond250 | 0.25 Å = ssbonds .25
+ssbond300 | 0.30 Å = ssbonds .3
+structureNone | 关闭 = backbone off;cartoons off;ribbons off;rockets off;strands off;trace off;
+backbone | 骨架 = restrict not selected;select not selected;backbone 0.3
+cartoon | 卡通 = restrict not selected;select not selected;set cartoonRockets false;cartoons on
+cartoonRockets | 卡通火箭 = restrict not selected;select not selected;set cartoonRockets;cartoons on
+ribbons | 带状 = restrict not selected;select not selected;ribbons on
+rockets | 火箭 = restrict not selected;select not selected;rockets on
+strands | 丝带 = restrict not selected;select not selected;strands on
+trace | 迹线 = restrict not selected;select not selected;trace 0.3
+vibrationOff | 关闭 = vibration off
+vibrationOn | 开启 = vibration on
+vibration20 | *2 = vibrationScale *= 2
+vibration05 | /2 = vibrationScale /= 2
+vectorOff | 关闭 = vectors off
+vectorOn | 开启 = vectors on
+vector3 | 3 像素 = vectors 3
+vector005 | 0.05 Å = vectors 0.05
+vector01 | 0.10 Å = vectors 0.1
+vectorScale02 | 刻度 0.2 = vector scale 0.2
+vectorScale05 | 刻度 0.5 = vector scale 0.5
+vectorScale1 | 刻度 1 = vector scale 1
+vectorScale2 | 刻度 2 = vector scale 2
+vectorScale5 | 刻度 5 = vector scale 5
+stereoNone | 无 = stereo off
+stereoRedCyan | 红+青 玻璃 = stereo redcyan 3
+stereoRedBlue | 红+蓝 玻璃 = stereo redblue 3
+stereoRedGreen | 红+蓝 玻璃 = stereo redgreen 3
+stereoCrossEyed | 交叉眼查看 = stereo -5
+stereoWallEyed | 八字眼查看 = stereo 5
+labelNone | 无 = label off
+labelSymbol | 标示元素符号 = label %e
+labelName | 标示原子名称 = label %a
+labelNumber | 标示原子编号 = label %i
+labelCentered | 居中 = set labeloffset 0 0
+labelUpperRight | 右上 = set labeloffset 4 4
+labelLowerRight | 右下 = set labeloffset 4 -4
+labelUpperLeft | 左上 = set labeloffset -4 4
+labelLowerLeft | 左下 = set labeloffset -4 -4
+zoom50 | 50% = zoom 50
+zoom100 | 100% = zoom 100
+zoom150 | 150% = zoom 150
+zoom200 | 200% = zoom 200
+zoom400 | 400% = zoom 400
+zoom800 | 800% = zoom 800
+zoomIn | 放大 = move 0 0 0 40 0 0 0 0 1
+zoomOut | 缩小 = move 0 0 0 -40 0 0 0 0 1
+spinOn | 开启 = spin on
+spinOff | 关闭 = spin off
+s0 | 0 = 0
+s5 | 5 = 5
+s10 | 10 = 10
+s20 | 20 = 20
+s30 | 30 = 30
+s40 | 40 = 40
+s50 | 50 = 50
+onceThrough | 播放一次 = anim mode once#
+palindrome | 回文 = anim mode palindrome#
+loop | 循环播放 = anim mode loop#
+play | 播放 = anim play#
+pause | 暂停 = anim pause#
+resume | 继续 = anim resume#
+stop | 停止 = anim off#
+nextframe | 下一格 = frame next#
+prevframe | 上一格 = frame prev#
+playrev | 反向 = anim playrev#
+rewind | 倒带 = anim rewind#
+restart | 重新开始 = anim on#
+animfps5 | 5 = anim fps 5#
+animfps10 | 10 = anim fps 10#
+animfps20 | 20 = anim fps 20#
+animfps30 | 30 = anim fps 30#
+animfps50 | 50 = anim fps 50#
+measureOff | 双击以开始及结束所有测量 = set pickingstyle MEASURE OFF; set picking OFF
+measureDistance | 点击以测量距离 = set pickingstyle MEASURE; set picking MEASURE DISTANCE
+measureAngle | 点击以测量角度 = set pickingstyle MEASURE; set picking MEASURE ANGLE
+measureTorsion | 点击测量(两平面间的)转矩 = set pickingstyle MEASURE; set picking MEASURE TORSION
+PDBmeasureSequence | 点击两个原子，在控制台中显示一个序列。 = set pickingstyle MEASURE; set picking MEASURE SEQUENCE
+measureDelete | 移除测量值 = measure delete
+measureList | 列出测量值 = console on;show measurements
+distanceNanometers | 距离单位 纳米 = select *; set measure nanometers
+distanceAngstroms | 距离单位 Å = select *; set measure angstroms
+distancePicometers | 距离单位 皮米 = select *; set measure picometers
+distanceHz | Distance units hz (NMR J-coupling) = select *; set measure hz
+pickOff | 关闭 = set picking off
+pickCenter | 居中显示 = set picking center
+pickIdent | 显示标识(ID) = set picking ident
+pickLabel | 显示标签 = set picking label
+pickAtom | 选择原子 = set picking atom
+dragAtom | Drag atom = set picking dragAtom
+dragMolecule | Drag molecule = set picking dragMolecule
+PDBpickChain | 选择链 = set picking chain
+pickElement | 选择元素 = set picking element
+modelKitMode | 退出建模工具(modelkit)模式 = set modelKitMode
+PDBpickGroup | 选择基团 = set picking group
+pickMolecule | 选择分子 = set picking molecule
+SYMMETRYpickSite | 选择位点 = set picking site
+pickSpin | 旋转 = set picking spin
+SYMMETRYpickSymmetry | 显示对称性操作 = set picking symmetry
+showConsole | 控制台 = console
+JSConsole | Jmol 脚本控制台 = JSCONSOLE
+showFile | 文件内容 = console on;show file
+showFileHeader | 文件头 = console on;getProperty FileHeader
+showHistory | 浏览历史 = console on;show history
+showIsosurface | 等面的 JVXL资料 = console on;show isosurface
+showMeasure | 测量 = console on;show measure
+showMo | 分子轨道的 JVXL 资料 = console on;show mo
+showModel | 模型 = console on;show model
+showOrient | 方向 = console on;show orientation
+showSpacegroup | 空间群 = console on;show spacegroup
+showState | 当前状态 = console on;show state
+reload | 重新载入 = load ""
+SIGNEDloadPdb | Get PDB file = var x__id__ = _modelTitle; if (x__id__.length != 4) { x__id__ = '1crn'};x__id__ = prompt('Enter a four-digit PDB model ID or "=" and a three-digit ligand ID',x__id__);if (!x__id__) { quit }; load @{'=' + x__id__}
+SIGNEDloadMol | Get MOL file = var x__id__ = _smilesString; if (!x__id__) { x__id__ = 'tylenol'};x__id__ = prompt('Enter the name or identifier (SMILES, InChI, CAS) of a compound. Preface with ":" to load from PubChem; otherwise Jmol will use the NCI/NIH Resolver.',x__id__);if (!x__id__) { quit }; load @{(x__id__[1]==':' ? x__id__ : '$' + x__id__)}
+SIGNEDloadFile | 打开已选定的文件 = load ?
+SIGNEDloadUrl | 打开 = load http://?
+SIGNEDloadFileUnitCell | 载入全部晶格 = load ? {1 1 1}
+SIGNEDloadScript | 打开脚本 = script ?.spt
+SIGNEDJAVAcaptureRock | Capture rock = animation mode loop;capture '?Jmol.gif' rock y 10
+SIGNEDJAVAcaptureSpin | Capture spin = animation mode loop;capture '?Jmol.gif' spin y
+SIGNEDJAVAcaptureBegin | Start capturing = capture '?Jmol.gif'
+SIGNEDJAVAcaptureEnd | End capturing = capture ''
+SIGNEDJAVAcaptureOff | Disable capturing = capture off
+SIGNEDJAVAcaptureOn | Re-enable capturing = capture on
+SIGNEDJAVAcaptureFpsSPECIAL | Set capture replay rate = animation fps @{0+prompt('Capture replay frames per second?', animationFPS)};prompt 'animation FPS ' + animationFPS
+SIGNEDJAVAcaptureLoopingSPECIAL | Toggle capture looping = animation mode @{(animationMode=='ONCE' ? 'LOOP':'ONCE')};prompt 'animation MODE ' + animationMode
+writeFileTextVARIABLE | 保存 {0} 的副本 = if (_applet && !_signedApplet) { console;show file } else { write file "?FILE?"}
+writeState | 保存脚本及状态 = if (_applet && !_signedApplet) { console;show state } else { write state "?FILEROOT?.spt"}
+writeHistory | 保存脚本及历史 = if (_applet && !_signedApplet) { console;show history } else { write history "?FILEROOT?.his"}
+SIGNEDwriteJmol | 全部保存为Jmol文件(zip) = write PNGJ "?FILEROOT?.png"
+SIGNEDwriteIsosurface | 保存 JVXL 等值面 = write isosurface "?FILEROOT?.jvxl"
+SIGNEDNOGLwriteGif | 导出 GIF 图像 = write image "?FILEROOT?.gif"
+SIGNEDNOGLwriteJpg | 导出 JPG 图像 = write image "?FILEROOT?.jpg"
+SIGNEDNOGLwritePng | 导出 PNG 图像 = write image "?FILEROOT?.png"
+SIGNEDNOGLwritePngJmol | 导出 PNG+JMOL 图像 = write PNGJ "?FILEROOT?.png"
+SIGNEDNOGLwritePovray | 导出 POV-Ray 图像 = write POVRAY "?FILEROOT?.pov"
+SIGNEDNOGLwriteVrml | 导出 VRML 3D 模型 = write VRML "?FILEROOT?.wrl"
+SIGNEDNOGLwriteX3d | 导出 X3D 3D 模型 = write X3D "?FILEROOT?.x3d"
+SIGNEDNOGLwriteSTL | 导出 STL 3D 模型 = write STL "?FILEROOT?.stl"
+SIGNEDNOGLwriteIdtf | 导出 IDTF 3D 模型 = write IDTF "?FILEROOT?.idtf"
+SIGNEDNOGLwriteMaya | 导出 Maya 3D 模型 = write MAYA "?FILEROOT?.ma"
+SYMMETRYshowSymmetry | 对称性 = console on;show symmetry
+UNITCELLshow | 单位晶格 = console on;show unitcell
+extractMOL | 提取 MOL 数据 = console on;getproperty extractModel "visible" 
+minimize | 优化结构 = minimize
+modelkit | 建模工具 = set modelkitmode
+surfDots | 点状表面 = dots on
+surfVDW | 范德华表面 = isosurface delete resolution 0 solvent 0 translucent
+surfMolecular | 分子表面 = isosurface delete resolution 0 molecular translucent
+surfSolvent14 | 溶剂表面 (1.4 Å 的探针) = isosurface delete resolution 0 solvent 1.4 translucent
+surfSolventAccessible14 | 溶剂可及表面 (范德华表面 + 1.4 Å) = isosurface delete resolution 0 sasurface 1.4 translucent
+surfMEP | Molecular Electrostatic Potential (range ALL) = isosurface delete resolution 0 vdw color range all map MEP translucent
+surf2MEP | Molecular Electrostatic Potential (range -0.1 0.1) = isosurface delete resolution 0 vdw color range -0.1 0.1 map MEP translucent
+surfOpaque | 不透明效果 = mo opaque;isosurface opaque
+surfTranslucent | 半透明效果 = mo translucent;isosurface translucent
+surfOff | 关闭 = mo delete;isosurface delete;var ~~sel = {selected};select *;dots off;select ~~sel
+FILEMOLload | 重新载入 (molecular) = save orientation;load "";restore orientation;center
+FILEUNITone | 重新载入 {1 1 1} = save orientation;load "" {1 1 1} ;restore orientation;center
+FILEUNITnine | 重新载入 {444 666 1} = save orientation;load "" {444 666 1} ;restore orientation;center
+FILEUNITnineRestricted | 重新载入 {444 666 1} + 显示 555 = save orientation;load "" {444 666 1} ;restore orientation; unitcell on; display cell=555;center visible;zoom 200
+FILEUNITninePoly | 重析载入 + 多面体 = save orientation;load "" {444 666 1} ;restore orientation; unitcell on; display cell=555; polyhedra 4,6 (displayed);center (visible);zoom 200
+1p | 1 像素 = on
+3p | 3 像素 = 3
+5p | 5 像素 = 5
+10p | 10 像素 = 10
+10a | 0.10 Å = 0.1
+20a | 0.20 Å = 0.20
+25a | 0.25 Å = 0.25
+50a | 0.50 Å = 0.50
+100a | 1.0 Å = 1.0
+
+
+# Part III -- Word Translations
+# -----------------------------
+
+cnmrMenu | 13C-NMR
+hnmrMenu | 1H-NMR
+allModelsText | 所有{0}模型
+altloc#PDB | 可替换的位置
+amino#PDB | 氨基酸
+atomsText | 原子：{0}
+biomoleculeText | 分子 {0} ({1} 个原子)
+biomoleculesMenuText | 生物分子
+black | 黑色
+blue | 蓝色
+bondsText | 化学键：{0}
+PDBheteroComputedMenu | 根据 HETATM 排列
+PDBaaResiduesComputedMenu | 根据残基名称排列
+PDBnucleicResiduesComputedMenu | 根据残基名称排列
+PDBcarboResiduesComputedMenu | 根据残基名称排列
+chain#PDB | 链
+chainsText | 链：{0}
+colorChargeMenu | Charge
+modelSetCollectionText | {0} 模型的收集
+configurationMenuText | 设置 ({0})
+configurationComputedMenu | 设置
+cyan | 青色
+darkgray | Dark Gray
+dotted | 点状
+cpk | 元素(CPK)
+elementsComputedMenu | 元素
+formalcharge | 形式电荷
+gold | 金色
+gray | 灰色
+green | 绿色
+group#PDB | 基团
+groupsText | 基团：{0}
+off#axes | 隐藏
+indigo | 靛蓝
+none | 继承
+languageComputedMenu | 语言
+lightgray | Light Gray
+loadBiomoleculeText | 载入分子 {0} ({1} 个原子)
+mainMenuText | 主选单
+opaque | 不透明效果
+translucent | 半透明效果
+maroon | 褐红
+modelMenuText | 模型{0}
+hiddenModelSetText | 分子模型的信息
+FRAMESbyModelComputedMenu | 模型/框架
+surfMoComputedMenuText | 分子轨道 ({0})
+molecule | 分子
+monomer#PDB | 单体
+modelSetMenu | 未载入原子
+olive | 橄榄色
+on | 开启
+orange | 橙色
+orchid | 谈紫色
+partialcharge | 部份电荷
+polymersText | 聚合物：{0}
+red | 红色
+salmon | 橙红色
+sceneComputedMenu | Scenes
+aaStructureMenu | 二级结构
+structure#PDB | 二级结构
+shapely#PDB | 定形的
+slateblue | 石板蓝色
+SYMMETRYShowComputedMenu | 空间群
+SYMMETRYSelectComputedMenu | 对称性
+relativeTemperature#BFACTORS | 温度(相对)
+fixedTemperature#BFACTORS | 温度(固定)
+property_vxyz#VIBRATION | 向量
+viewMenuText | 查看 {0}
+violet | 紫色
+white | 白色
+yellow | 黄色
+JAVAmemTotal | ?
+JAVAmemMax | ?
+JAVAprocessors | ?
+date | 2024-04-16 21:43
+version | 16.2.5
+javaVender | Java2Script (HTML5)
+javaVersion | 2022-06-24 05:54:49 (JSmol/j2s)
+os | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0
