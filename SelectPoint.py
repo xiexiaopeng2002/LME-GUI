@@ -29,7 +29,7 @@ class SelectPoint(QWidget):
         self._page.setWebChannel(self._channel)
 
         self._ui.preview.setUrl(QUrl("qrc:3rdparty/test2.htm"))
-        self._ui.preview.loadFinished.connect(lambda: page.runJavaScript('Jmol.loadFile(jmolApplet0,"C:/Users/97521/Desktop/Clwithoutbug.mol2")'))
+        self._ui.preview.loadFinished.connect(lambda: page.runJavaScript('Jmol.loadFile(jmolApplet0,"http://127.0.0.1:8000")'))
         
 
 

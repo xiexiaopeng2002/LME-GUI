@@ -3,6 +3,9 @@ from MainWindow_ui import Ui_MainWindow
 from WorkflowConfigCreater_ui import Ui_wfcCreater
 # from browser import Browser
 from SelectPoint import SelectPoint
+from fileserver import start_fileserver
+import time
+from multiprocessing import Process
 
 class MainWindow(QtWidgets.QMainWindow,Ui_MainWindow):
     switch_wfcCreater = QtCore.Signal()
@@ -33,8 +36,8 @@ class wfcCreater(QtWidgets.QMainWindow,Ui_wfcCreater):
         rootdir = QtWidgets.QFileDialog.getExistingDirectory(self, "选择产物输出路径")
         self.lineEdit_1.setText(rootdir)
     def gofilebrowser2(self):
-        rootdir = QtWidgets.QFileDialog.getExistingDirectory(self, "选择模板文件路径")
-        self.lineEdit_2.setText(rootdir)
+        moldir = QtWidgets.QFileDialog.getOpenFileName(self, "选择模板文件路径")
+        self.lineEdit_2.setText(moldir[0])
     def gofilebrowser3(self):
         rootdir = QtWidgets.QFileDialog.getExistingDirectory(self, "选择取代基路径")
         self.lineEdit_3.setText(rootdir)
@@ -50,7 +53,7 @@ class fliebrowser(QtWidgets.QFileDialog):
 
 class Controller:
     def __init__(self) -> None:
-        pass
+        self.wfcCreater = None
     # 跳转到主界面
     def show_mainwindow(self):
         self.mainwindow = MainWindow()
@@ -64,6 +67,12 @@ class Controller:
         self.wfcCreater.show()
     # def showstructure(self):
     def show_selectpoint(self):
+        molpath = self.wfcCreater.lineEdit_2.text()
+        # 创建一个新的进程来运行start_fileserver函数
+        server_process = Process(target=start_fileserver, args=(molpath,))
+        server_process.start() # 启动新进程
+        time.sleep(2)
+        # 在主进程中继续执行其他代码
         self.selectpoint = SelectPoint()
         self.selectpoint.show()
         

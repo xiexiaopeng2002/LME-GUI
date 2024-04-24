@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <title>HTML5-only and WebGL Jmol Demo</title>
+
 <head>
-<meta charset="utf-8">
+	<meta charset="utf-8">
 </head>
 <!-- breaking out the library for debugging -->
 <script type="text/javascript" src="jquery/jquery.js"></script>
@@ -22,71 +23,76 @@
 
 <script type="text/javascript">
 
-Jmol._isAsync = false;
+	Jmol._isAsync = false;
 
-Jmol.getProfile() // records repeat calls to overridden or overloaded Java methods
+	Jmol.getProfile() // records repeat calls to overridden or overloaded Java methods
 
-var jmolApplet0; // set up in HTML table, below
+	var jmolApplet0; // set up in HTML table, below
 
 
-jmol_isReady = function(applet) {
-	document.title = (applet._id + " is ready")
-	Jmol._getElement(applet, "appletdiv").style.border="1px solid blue"
- 
-}		
+	jmol_isReady = function (applet) {
+		document.title = (applet._id + " is ready")
+		Jmol._getElement(applet, "appletdiv").style.border = "1px solid blue"
 
-Info = {
-        width: 750,
-        height: 500,
-	debug: false,
-	color: "#F0F0F0",
-	zIndexBase: 20000,
-	z:{monitorZIndex:100},
-	addSelectionOptions: true,
-	serverURL: "http://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
-	use: "HTML5",
-        language: "zh_CN", // NOTE: LOCALIZATION REQUIRES <meta charset="utf-8"> (see JSmolCore Jmol.featureDetection.supportsLocalization)
-	jarPath: "java",
-	j2sPath: "j2s",
-	jarFile: "JmolApplet.jar",
-	isSigned: false,
-	disableJ2SLoadMonitor: false,
-	disableInitialConsole: false, // default now is true
-	readyFunction: jmol_isReady,
-	allowjavascript: true,
-//	appletLoadingImage: "none",
-	script: "set zoomlarge false;set antialiasdisplay;load async data/caffeine.mol;"
-//	script: "set antialiasDisplay;set showtiming;load async data/caffeine.mol;"
-	//,defaultModel: ":dopamine"
-  //,noscript: true
-	//console: "none", // default will be jmolApplet0_infodiv
-	//script: "set antialiasDisplay;background white;load data/caffeine.mol;"
-  //delay 3;background yellow;delay 0.1;background white;for (var i = 0; i < 10; i+=1){rotate y 3;delay 0.01}"
-}
+	}
+
+	Info = {
+		width: 750,
+		height: 500,
+		debug: false,
+		color: "#F0F0F0",
+		zIndexBase: 20000,
+		z: { monitorZIndex: 100 },
+		addSelectionOptions: true,
+		// serverURL: "http://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+		serverURL: "jsmol.php",
+		use: "HTML5",
+		language: "zh_CN", // NOTE: LOCALIZATION REQUIRES <meta charset="utf-8"> (see JSmolCore Jmol.featureDetection.supportsLocalization)
+		jarPath: "java",
+		j2sPath: "j2s",
+		jarFile: "JmolApplet.jar",
+		isSigned: false,
+		disableJ2SLoadMonitor: false,
+		disableInitialConsole: false, // default now is true
+		readyFunction: jmol_isReady,
+		allowjavascript: true,
+		//	appletLoadingImage: "none",
+		script: "set zoomlarge false;set antialiasdisplay;"
+		//	script: "set antialiasDisplay;set showtiming;load async data/caffeine.mol;"
+		//,defaultModel: ":dopamine"
+		//,noscript: true
+		//console: "none", // default will be jmolApplet0_infodiv
+		//script: "set antialiasDisplay;background white;load data/caffeine.mol;"
+		//delay 3;background yellow;delay 0.1;background white;for (var i = 0; i < 10; i+=1){rotate y 3;delay 0.01}"
+	}
 
 
 
 </script>
+
 <body>
-<table width=800 cellpadding=10>
-<tr></tr>
-<tr><td valign=top>
+	<table width=800 cellpadding=10>
+		<tr></tr>
+		<tr>
+			<td valign=top>
 
 
-<script>
+				<script>
 
-// note that the variable name MUST match the first parameter in quotes
+					// note that the variable name MUST match the first parameter in quotes
 
 
-jmolApplet0 = Jmol.getApplet("jmolApplet0", Info)
+					jmolApplet0 = Jmol.getApplet("jmolApplet0", Info)
 
-// note that now scripts can be sent immediately after the _Applet object is created
+					// note that now scripts can be sent immediately after the _Applet object is created
 
-//Jmol.script(jmolApplet0,"background gray;delay 0.5;background black")
-//var lastPrompt=0;
-</script>
+					//Jmol.script(jmolApplet0,"background gray;delay 0.5;background black")
+					//var lastPrompt=0;
+				</script>
 
-</td>
-</tr></table>
+			</td>
+		</tr>
+	</table>
 </body>
+
 </html>
