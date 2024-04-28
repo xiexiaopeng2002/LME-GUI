@@ -1,5 +1,6 @@
 from flask import Flask, send_file, request
 from werkzeug.serving import run_simple
+import os
 
 class fileserver:
     app = Flask(__name__)
@@ -13,10 +14,7 @@ class fileserver:
     @staticmethod
     @app.route('/shutdown')
     def shutdown():
-        func = request.environ.get('werkzeug.server.shutdown')
-        if func is None:
-            raise RuntimeError('Not running with the Werkzeug Server')
-        func()
+        os.kill(os.getpid(), 9)  # kill the process with signal 9 (SIGKILL)
         return 'Server shutting down...'
 
     def __init__(self, molpath):
@@ -25,5 +23,4 @@ class fileserver:
 
 def start_fileserver(path):
     server = fileserver(path)
-    print(path)
     run_simple('localhost', 8000, fileserver.app)
